@@ -1,5 +1,13 @@
 local M = {}
 M.setup = function()
+    vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
+    vim.keymap.set("n", "<F6>", "<cmd>lua require('dapui').toggle({reset = true})<cr>")
+    vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
+    vim.keymap.set("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>")
+    vim.keymap.set("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>")
+    vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>")
+
+
     lvim.builtin.which_key.mappings["t"] = {
         name = "Trouble",
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -13,7 +21,8 @@ M.setup = function()
     lvim.builtin.which_key.mappings["f"] = {
         name = "File Search",
         c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        f = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Find Project Files" },
+        F = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find All Files" },
         t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern In All Files" },
         r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" }

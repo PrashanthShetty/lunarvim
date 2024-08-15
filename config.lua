@@ -17,9 +17,7 @@ function addRelPath(dir)
         .. package.path
 end
 
--- print(package.path)
 addRelPath("lua")
--- package.path = 'lua/?.lua;' .. package.path
 vim.opt.shiftwidth = 4        -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4           -- insert 2 spaces for a tab
 vim.opt.relativenumber = true -- relative line numbers
@@ -33,10 +31,7 @@ vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- If you're using transparent windows enable this setting
 -- lvim.transparent_window = true
 
--- lvim.colorscheme = "onedark"
--- lvim.colorscheme = "kanagawa-wave"
 lvim.colorscheme = "onenord"
--- lvim.builtin.dap.active = false
 
 lvim.builtin.lualine.style = "default"
 lvim.builtin.treesitter.highlight.enabled = true
@@ -115,15 +110,8 @@ lvim.builtin.dap.on_config_done = function(dap)
     -- require("dapui").setup()
     require('dap.ext.vscode').load_launchjs()
     require('dap-go').setup()
-
-    vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
-    vim.keymap.set("n", "<F6>", "<cmd>lua require('dapui').toggle({reset = true})<cr>")
-    vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
-    vim.keymap.set("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>")
-    vim.keymap.set("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>")
-    vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>")
 end
--------------------------
+-------------------------BufferLinePickClose
 -- LSP
 ------------------------
 require("config.lsp-settings").setup()

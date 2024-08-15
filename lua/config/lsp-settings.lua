@@ -1,4 +1,19 @@
 local M = {}
+local lspCap = require("lvim.lsp").common_capabilities()
+
+function make_client_capabilities()
+    local caps = lspCap
+    if not (caps.workspace or {}).didChangeWatchedFiles then
+        vim.notify(
+            'lsp capability didChangeWatchedFiles is already disabled',
+            vim.log.levels.WARN
+        )
+    else
+        caps.workspace.didChangeWatchedFiles = nil
+    end
+    return caps
+end
+
 M.setup = function()
     vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 
